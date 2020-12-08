@@ -1,0 +1,1 @@
+<h2>Welcome to your daily journal</h2>
