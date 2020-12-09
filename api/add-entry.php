@@ -2,10 +2,15 @@
 
     include("getData.php");
     include("sendJSON.php");
-
+    include("../helpers/readData.php");
     $results = getData();
-    $file = fopen(ABS_PATH . "/data.json", "r+") or die("Cannot read file.");    
-    $data = json_decode($file, filesize(ABS_PATH . "/data.json"));
 
-    sendJSON($results);
+    $data = readData('../data.json');
+
+    array_push($data, $results);
+
+    file_put_contents('../data.json', json_encode($data));
+
+    header("Location:/");
+
 ?>

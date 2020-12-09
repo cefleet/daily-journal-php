@@ -1,18 +1,15 @@
 <h2>Journal Entries</h2>
 <div>
-    <?php 
+    <?php    
+        $json_entries = readData("data.json");
+        $entries = array();
+        foreach($json_entries as $entry){
+            array_push($entries, new Entry($entry->title, $entry->entry, $entry->date));
+        }
 
-        include(ABS_PATH . "/classes/Entry.php");
-
-
-        $entries = array(
-            new Entry("I Got this", "This is all of the things I got", DATE_TEXT),
-            new Entry("I Got this", "This is all of the things I got", DATE_TEXT),
-            new Entry("I Got this", "This is all of the things I got", DATE_TEXT)
-        );
+        $entries = array_reverse($entries);
 
         $res = '<div class="entriesList">';
-
         foreach($entries as $entry){
             $res .= $entry->write_content();
         }

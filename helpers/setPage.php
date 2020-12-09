@@ -1,13 +1,15 @@
 <?php
-    function getContent(){
-
-
-        if(PAGE == "home"){
-            include(ABS_PATH . "/content/pages/main.php");
-        } elseif(PAGE == 'list-entries'){
-            include(ABS_PATH . "/content/pages/list-entries.php");
-        } elseif(PAGE == "add-entry"){
-            include(ABS_PATH . "/content/pages/add-entry.php");
+    function setPage(){
+        global $page;
+        //This is bad. The string is relative to where the function is called not the location of the 
+        //not the actual location of the file 
+        //TODO Change this QUICKLY before anybody sees it.
+        if($page == "home"){
+            include("content/pages/list-entries.php");
+        } elseif($page == 'list-entries'){
+            include("content/pages/list-entries.php");
+        } elseif($page == "add-entry"){
+            include("content/pages/add-entry.php");
         }
     }
 ?>

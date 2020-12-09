@@ -1,23 +1,16 @@
 <?php 
+    //classes
+    include("classes/Entry.php");
 
-    function getPage(){
-        $page = "home";
-        if(array_key_exists("page", $_GET)){
-            $page = $_GET["page"];
-        }
-        return $page;
-    }
+    //helpers
+    include("helpers/readData.php");
+    include("helpers/setPage.php");
+    include("helpers/getPageName.php");
 
-    function setDateText(){
-        $date = new DateTime('NOW');
-        return $date->format('Y-m-d H:i');
-    }
-
-    define("ABS_PATH", $_SERVER['DOCUMENT_ROOT']);
-    define("DATE_TEXT", setDateText());
-    define("PAGE", getpage());
-    include(ABS_PATH . "/helpers/setPage.php");
-
+    //global vars
+    $page = getPageName();
+    $date = new DateTime('NOW');
+    $dateText = $date->format('Y-m-d H:i');        
 
 ?>
 <?php 
@@ -25,14 +18,14 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <?php include(ABS_PATH . "/content/partials/header.php") ?>
+    <?php include("content/partials/header.php") ?>
     <body>
         <div class="header">
-            <?php include(ABS_PATH . "/content/partials/navigation.php") ?>
+            <?php include("content/partials/navigation.php") ?>
         </div>
         <h1>Daily Journal</h1>
         <div id="content">
-            <?php getContent() ?>
+            <?php setPage() ?>
         </div>
     </body>
 </html>
