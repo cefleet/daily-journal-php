@@ -16,7 +16,7 @@
     define("ABS_PATH", $_SERVER['DOCUMENT_ROOT']);
     define("DATE_TEXT", setDateText());
     define("PAGE", getpage());
-    include(ABS_PATH . "/helpers/getContent.php");
+    include(ABS_PATH . "/helpers/setPage.php");
 
 
 ?>

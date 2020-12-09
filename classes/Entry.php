@@ -17,5 +17,14 @@
                 "date"=>$this->date
             );            
         }
+
+        function write_content(){
+            $res = '<div class="entry">' .
+            '<h3>' . $this->title . '</h3>' .
+            '<p>'. $this->entry . '</p>' .
+            '<span>' . $this->date . '</span>' .
+            '</div>';
+            return $res;
+        }
     }
 ?>
